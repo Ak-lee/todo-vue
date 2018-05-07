@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js"
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
+    "build": "npm run clean && npm run build:client",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "clean": "rimraf dist",
+    "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
+    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
+    "precommit": "npm run lint-fix"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +19,9 @@
     "vue": "^2.5.16"
   },
   "devDependencies": {
-    "webpack-merge": "^4.1.2",
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -24,17 +29,29 @@
     "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^12.0.0-alpha.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
     "postcss-loader": "^2.0.9",
+    "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "url-loader": "^1.0.1",
     "vue-loader": "^13.6.0",
+    "vue-style-loader": "3.0.3",
     "vue-template-compiler": "^2.0.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.2"
   }
 }
