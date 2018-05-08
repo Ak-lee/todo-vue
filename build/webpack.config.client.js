@@ -13,7 +13,9 @@ const defaultPlugins = [
             NODE_ENV: isDev ? '"development"' : '"production"'
         }
     }),
-    new HTMLPlugin()
+    new HTMLPlugin({
+      template: path.join(__dirname,'./template.html')
+    })
 ]
 
 const devServer ={
@@ -21,6 +23,9 @@ const devServer ={
     host:'0.0.0.0',      // 方便用localhost来访问 推荐全写零
     overlay:{
         errors:true
+    },
+    historyApiFallback: {
+      index: '/index.html'
     },
     hot:true    // 即组件更改只需重新渲染组件对应部分，不会整个页面刷新
 }
