@@ -3,6 +3,7 @@
         <div id="cover">
             <Header></Header>
             <!--<todo></todo>-->
+            <div>{{fullName}}</div>
             <router-link to="/app">app</router-link>
             <router-link to="/login">login</router-link>
             <router-view />
@@ -15,11 +16,18 @@
     import Header from './layout/header.vue'
     import Footer from './layout/footer.jsx'
     import Todo from './views/todo/todo.vue'
+    import {mapGetters} from 'vuex'
     export default {
       components: {
         Header,
         Footer,
         Todo
+      },
+      computed: {
+        // fullName () {
+        //   return this.$store.getters.fullName
+        // }
+        ...mapGetters({fullName: 'fullName'})
       }
     }
 </script>
