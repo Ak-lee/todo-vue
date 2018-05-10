@@ -4,6 +4,6 @@ export default {
   // 比如我们从后端拿到的一些数据需要组装一下才方便使用，同时有不是只在一个组件里面使用
   // 这种时候就需要用到 getters
   fullName (state) {
-    return `${state.firstName} ${state.lastName}`
+    return `${state.firstName} 123 ${state.lastName}`
   }
 }
